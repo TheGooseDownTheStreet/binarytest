@@ -3,85 +3,58 @@
 function imageClick (parm) {
     let img = document.getElementById(parm);
     console.log(`id: ${parm}`);
-    if (parm == `hand-3`){
-        console.log(`Match`);
-        let div = document.getElementById(`div1`);
-        div.innerHTML = ``;
-        image1.style.display = "none";
-        image2.style.display = "block";
-        image3.style.display = "none";
-        let div2 = document.getElementById(`div2`);
-        div2.innerHTML += `Down low`;
-    } else if (parm == `cat-1`){
-        console.log(`Match`);
-        let div = document.getElementById(`div2`);
-        div.innerHTML = ``;
-        image1.style.display = "none";
-        image2.style.display = "none";
-        image3.style.display = "none";
-        let div2 = document.getElementById(`div3`);
-        div2.innerHTML = `Too slow`;
-    }else if (parm == `hand-1`){
-        console.log(`Match`);
-        let div = document.getElementById(`div3`);
-        image1.style.display = "none";
-        image2.style.display = "none";
-        image3.style.display = "none";
+    if (parm == `honker`) {
+        page_div3.style.zIndex = 1;
+        page_div4.style.zIndex = 2;
+        text1.innerText = `\nhonk`;
+    } else if (parm == `honker2`) {
+        page_div3.style.zIndex = 2;
+        page_div4.style.zIndex = 1;
+        text1.innerText = ``;
     }
-
-        
-}
-let dt = new Date;
-let pretty_time = dt.toTimeString();
-pretty_time = pretty_time.match(/(.*)GMT/)[1];
-let pretty_text = `hello world at ${pretty_time}`;
-pretty_text = pretty_text.toUpperCase();
-
-if(pretty_text.includes(`at`.toUpperCase())) {
-    console.log(`match`);
-    pretty_text = pretty_text.replace(`AT`, 
-    `<span style="color:blue;font-family:monospace">AT</span>`);
-} else {
-    console.log(`No match :)`);
 }
 let image1 = document.createElement("img");
-image1.setAttribute("src", "img/hand-3.jfif");
+image1.setAttribute("src", "img/honker.png");
 image1.setAttribute("onclick", "imageClick(this.id)");
-image1.setAttribute("id", "hand-3");
+image1.setAttribute("id", "honker");
 
 let image2 = document.createElement("img");
-image2.setAttribute("src", "img/hand-3.jfif");
+image2.setAttribute("src", "img/honker2.png");
 image2.setAttribute("onclick", "imageClick(this.id)");
-image2.setAttribute("id", "cat-1");
+image2.setAttribute("id", "honker2");
 
-let image3 = document.createElement("img");
-image3.setAttribute("src", "img/hand-3.jfif");
-image3.setAttribute("onclick", "imageClick(this.id)");
-image3.setAttribute("id", "hand-1");
+let text1 = document.createElement(`text`);
+text1.setAttribute("id", "text1");
+text1.setAttribute("class", "honk_text");
 
-image1.style.display = "block";
-image2.style.display = "none";
-image3.style.display = "none";
 
 let page_div1 = document.createElement(`div`);
-page_div1.setAttribute(`class`, `page_div1`);
+page_div1.setAttribute(`class`, `page_container`);
 page_div1.setAttribute(`id`, `div1`);
-page_div1.appendChild(image1);
-page_div1.innerHTML += `Up high`;
+//page_div1.appendChild(image1);
+//page_div1.innerHTML += `Up high`;
+//document.body.innerHTML = `<h1>` + pretty_text + `</h1>`;
 
 let page_div2 = document.createElement(`div`);
-page_div2.setAttribute(`class`, `page_div2`);
+page_div2.setAttribute(`class`, `page_text`);
 page_div2.setAttribute(`id`, `div2`);
-page_div2.appendChild(image2);
 
 let page_div3 = document.createElement(`div`);
-page_div3.setAttribute(`class`, `page_div3`);
+page_div3.setAttribute(`class`, `page_honk1`);
 page_div3.setAttribute(`id`, `div3`);
-page_div3.appendChild(image3);
-//document.body.innerHTML = `<h1>` + pretty_text + `</h1>`;
+page_div3.appendChild(image1);
+
+let page_div4 = document.createElement(`div`);
+page_div4.setAttribute(`class`, `page_honk2`);
+page_div4.setAttribute(`id`, `div4`);
+page_div4.appendChild(image2);
+
+page_div2.appendChild (text1);
+page_div1.appendChild (page_div2);
+page_div1.appendChild (page_div4);
+page_div1.appendChild (page_div3);
+
 document.body.appendChild(page_div1);
-document.body.appendChild(page_div2);
-document.body.appendChild(page_div3);
 
 //document.body.setAttribute("bgcolor", "blue");
 
